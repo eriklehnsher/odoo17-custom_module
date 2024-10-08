@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <!-- Email Template for Plan Sale Order Approval -->
+        <record id="email_template_plan_sale_order_approval" model="mail.template">
+            <field name="name">Thông báo Phê duyệt Kế hoạch Bán hàng</field>
+            <field name="model_id" ref="sale_plans.model_plan_sale_order"/> <!-- Sửa thành external ID chính xác -->
+            <field name="subject">Yêu cầu phê duyệt kế hoạch bán hàng</field>
+            <field name="email_to">${object.approver_ids.email|safe}</field>
+            <field name="email_cc"></field> <!-- Có thể thêm email CC nếu cần -->
+            <field name="auto_delete" eval="True"/> <!-- Tự động xóa sau khi gửi -->
+            <field name="body_html">
+                <![CDATA[
+                    <p>Xin chào,</p>
+                    <p>Bạn có một yêu cầu phê duyệt kế hoạch bán hàng mới.</p>
+                    <p><strong>Kế hoạch:</strong> ${object.name}</p>
+                    <p><strong>Thông tin:</strong> ${object.plan_sale_order_info}</p>
+                    <p>Vui lòng truy cập hệ thống để xem chi tiết và phê duyệt kế hoạch.</p>
+                    <p>Trân trọng,</p>
+                    <p><i>Đội ngũ Quản lý Bán hàng</i></p>
+                ]]>
+            </field>
+        </record>
+
+        
+    </data>
+</odoo>

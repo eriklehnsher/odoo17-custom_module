@@ -1,0 +1,26 @@
+<odoo>
+	<data>
+		<record id="sale_order_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.form.inherit.plan.sale.order</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_confirm']" position="after">
+					<button name="action_create_plan_sale_order" string="Plan Sale Order" type="object" class="oe_highlight" />
+				</xpath>
+			</field>
+		</record>
+
+		<!-- tạo record riêng với id kế thừa riêng, 1 tree và form -->
+		<record id="sale_order_tree_inherit" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.plan.sale.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='message_needaction']" position="before">
+                    <field name="plan_sale_order_ids" />
+                </xpath>
+            </field>
+        </record>
+	</data>
+</odoo>
