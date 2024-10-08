@@ -1,0 +1,1 @@
+# odoo17-custom_module
